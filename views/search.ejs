@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<% include layout/head %>
+
+    <body>
+        <% include layout/nav %>
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col-10 offset-1">
+                        <form class="form-inline" method="post">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="word" class="sr-only">검색어</label>
+                                <input type="text" name="word" class="form-control" id="word" placeholder="검색어 입력">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">검색하기</button>
+                        </form>
+                    </div>
+                </div>
+                <% if(typeof list != 'undefined') {
+                    for(let i = 0; i < list.length; i++) { %>
+                    <div class="list-group">
+                        <a href="<%= list[i].link %>" target="_blank" class="list-group-item list-group-item-action active">품명 : <%= list[i].title %></a>
+                        <a href="#" class="list-group-item list-group-item-action">가격 : <%= list[i].price %></a>
+                        <a href="#" class="list-group-item list-group-item-action">카테고리 : <%= list[i].category %></a>
+                        <a href="#" class="list-group-item list-group-item-action">상세설명 : <%= list[i].detail %></a>
+                        <a href="#" class="list-group-item list-group-item-action"><%= list[i].review %></a><br>
+                      </div>
+                    <% }
+                } %>
+            </div>
+    </body>
+
+</html>
